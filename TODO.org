@@ -1,8 +1,8 @@
 * TODO base functionality for use
   - [-] Base modules [0%]
-    - [-] Base privacy and settings page [1/4]
+    - [-] Base privacy and settings page [2/4]
       - [X] Settings board: password encrypt
-      - [ ] Settings page
+      - [X] Settings page
       - [ ] Fake passwords - on incorrect password show wrong data
       - [ ] PWA setup
     - [ ] Notes organizer [0%]

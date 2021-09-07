@@ -1,14 +1,54 @@
 <template>
   <v-app id="inspire">
-    <Login v-if="!authorized"/>
-    <div v-if="authorized">Authorized!</div>
-  </v-app>
+    
+    <v-app-bar app>
+      <v-icon @click="drawer = !drawer">{{ icons.mdiMenu }}</v-icon>
+      <v-toolbar-title>NotesAPP</v-toolbar-title>
+    </v-app-bar>
 
+    <v-navigation-drawer
+         v-model="drawer"
+         fixed
+         temporary
+         v-if="authorized"
+         >
+         <v-list>
+           <v-list-item 
+            v-for="menuItem in menu" 
+            :key="menuItem.text" 
+            :to="menuItem.link"
+            link >
+            <v-list-item-icon>
+              <v-icon>
+                {{menuItem.icon}}
+              </v-icon>
+            </v-list-item-icon>
+            
+            <v-list-item-content>
+              <v-list-item-title>{{ menuItem.text }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+         </v-list>
+    </v-navigation-drawer>
+
+    <v-main>
+      <v-container>
+        <Login v-if="!authorized"/>
+        <router-view v-if="authorized"></router-view>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
   import { mapState } from 'vuex';
   import Login from '@/views/Login.vue';
+  import {
+    mdiMenu,
+    mdiSquare,
+    mdiCog,
+    mdiHome,
+  } from '@mdi/js';
 
   export default {
     components: {
@@ -21,14 +61,25 @@
     
     data: function () {
       return {
-        cards: ['Today', 'Yesterday'],
         drawer: null,
-        links: [
-          ['mdi-inbox-arrow-down', 'Inbox'],
-          ['mdi-send', 'Send'],
-          ['mdi-delete', 'Trash'],
-          ['mdi-alert-octagon', 'Spam'],
-        ],
+        icons: {
+          mdiMenu,
+          mdiSquare,
+          mdiHome,
+        },
+
+        menu: [
+          {
+            icon: mdiHome,
+            text: 'Home',
+            link: '/',
+          },
+          {
+            icon: mdiCog,
+            text: 'Settings',
+            link: '/settings',
+          }
+        ]
       };
     }
   }
