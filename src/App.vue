@@ -1,12 +1,38 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="inspire">
+    <Login v-if="!authorized"/>
+    <div v-if="authorized">Authorized!</div>
+  </v-app>
+
 </template>
+
+<script>
+  import { mapState } from 'vuex';
+  import Login from '@/views/Login.vue';
+
+  export default {
+    components: {
+      Login,
+    },
+
+    computed: mapState({
+      authorized: state => state.authorized,
+    }),
+    
+    data: function () {
+      return {
+        cards: ['Today', 'Yesterday'],
+        drawer: null,
+        links: [
+          ['mdi-inbox-arrow-down', 'Inbox'],
+          ['mdi-send', 'Send'],
+          ['mdi-delete', 'Trash'],
+          ['mdi-alert-octagon', 'Spam'],
+        ],
+      };
+    }
+  }
+</script>
 
 <style lang="scss">
 #app {

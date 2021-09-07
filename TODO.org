@@ -1,0 +1,19 @@
+* TODO base functionality for use
+  - [-] Base modules [0%]
+    - [-] Base privacy and settings page [1/4]
+      - [X] Settings board: password encrypt
+      - [ ] Settings page
+      - [ ] Fake passwords - on incorrect password show wrong data
+      - [ ] PWA setup
+    - [ ] Notes organizer [0%]
+      - [ ] Markdown editor
+      - [ ] CRUD for notes
+      - [ ] Tags and folders for notes
+    - [ ] Trello like application
+      - [ ] create base agile board: TODO, doing, done
+      - [ ] Save boards and
+    - [ ] Profile saver
+      - [ ] Profile db saver
+      - [ ] Editor for profiles - photo, text
+    - [ ] Budget planning
+    - [ ] Map save\edit
